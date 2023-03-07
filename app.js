@@ -44,6 +44,7 @@ app.use("/password", resetPasswordRoutes);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use((req,res) => {
+  console.log('jenkins')
   res.sendFile(path.join(__dirname,`public/${req.url}`))
 })
 // app.use((req, res, next) => {
