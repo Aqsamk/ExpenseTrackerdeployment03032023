@@ -35,9 +35,7 @@ app.use(cors());
 // app.use(morgan('combined'))
 app.use(express.json());
 
-app.use((req,res) => {
-  res.sendFile(path.join(__dirname,`public/${req.url}`))
-})
+
 app.use("/user", userRoutes);
 app.use("/expense", expenseRoutes);
 app.use("/purchase", purchaseRoutes);
@@ -45,6 +43,9 @@ app.use("/premium", premiumFeatureRoutes);
 app.use("/password", resetPasswordRoutes);
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use((req,res) => {
+  res.sendFile(path.join(__dirname,`public/${req.url}`))
+})
 // app.use((req, res, next) => {
 //   res.setHeader('Content-Security-Policy', "script-src 'self' https://cdnjs.cloudflare.com");
 //   next();
